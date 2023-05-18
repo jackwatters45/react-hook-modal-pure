@@ -1,19 +1,12 @@
 import { ModalProps, ModalProvider, useModal, useModalTrigger } from './useModal';
-import { styled } from 'styled-components';
-
-const StyledModal = styled.div`
-  background-color: red;
-  width: fit-content;
-  padding: 0 8px;
-`;
 
 const Modal = (props: ModalProps) => {
   const modalProps = useModal(props);
 
   return (
-    <StyledModal {...modalProps}>
+    <div className="modal" {...modalProps}>
       <h1>Modal Content</h1>
-    </StyledModal>
+    </div>
   );
 };
 
