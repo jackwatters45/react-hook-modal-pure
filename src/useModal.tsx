@@ -80,3 +80,8 @@ export const useModalTrigger = () => {
     buttonProps: { onClick: () => setIsModalVisible(true), ref: buttonRef },
   };
 };
+
+export type useModalParams = {
+  buttonRef: RefObject<HTMLButtonElement>;
+  closeModal: () => void;
+};

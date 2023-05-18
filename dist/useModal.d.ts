@@ -25,4 +25,8 @@ export declare const useModalTrigger: () => {
         ref: import("react").MutableRefObject<HTMLButtonElement>;
     };
 };
+export type useModalParams = {
+    buttonRef: RefObject<HTMLButtonElement>;
+    closeModal: () => void;
+};
 //# sourceMappingURL=useModal.d.ts.map
