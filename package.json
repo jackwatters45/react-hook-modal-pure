@@ -1,6 +1,6 @@
 {
   "name": "react-hook-modal-pure",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "main": "dist/useModal.js",
   "license": "MIT",

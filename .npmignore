@@ -6,4 +6,5 @@
 index.html
 src
 tsconfig.json
-vite.config.tsconfig.husky
+vite.config.ts
+.husky
