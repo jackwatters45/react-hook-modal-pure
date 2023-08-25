@@ -1,7 +1,6 @@
 {
   "name": "react-hook-modal-pure",
-  "version": "1.0.8",
-  "type": "module",
+  "version": "1.0.9",
   "main": "dist/useModal.js",
   "types": "dist/useModal.d.ts",
   "license": "MIT",
@@ -17,7 +16,7 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier \"src/**/*.{js,jsx,ts,tsx,css,scss,md,html,json,yml}\" --write",
-    "compile": "tsc src/useModal.tsx --declaration --declarationMap --jsx react-jsx --esModuleInterop  --outDir dist",
+    "prepublish": "tsc src/useModal.tsx --declaration --declarationMap --jsx react-jsx --esModuleInterop  --outDir dist",
     "preview": "vite preview",
     "prepare": "husky install"
   },
