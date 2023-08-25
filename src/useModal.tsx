@@ -26,18 +26,25 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
+interface ModalOptions {
+  rightPositionDistance?: number;
+}
+
 export type ModalProps = {
   buttonRef: RefObject<HTMLElement>;
   closeModal: () => void;
+  options?: ModalOptions;
 };
 
-export const useModal = ({ buttonRef, closeModal }: ModalProps) => {
+export const useModal = ({ buttonRef, closeModal, options }: ModalProps) => {
   const rightPositionStyle = useMemo(() => {
     if (!buttonRef?.current) throw new Error('buttonRef is undefined');
     const buttonRect = buttonRef?.current?.getBoundingClientRect();
     const pickerRightLoc = buttonRect?.left + 270 ?? 0;
-    return window.innerWidth - pickerRightLoc < 0 ? { right: 0 } : {};
-  }, [buttonRef]);
+    return window.innerWidth - pickerRightLoc < 0
+      ? { right: `${options?.rightPositionDistance}px` ?? 0 }
+      : {};
+  }, [buttonRef, options]);
 
   const modalRef = useRef<HTMLDivElement>(null);
   useEffect(() => {

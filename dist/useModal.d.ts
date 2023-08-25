@@ -1,14 +1,18 @@
 import { ReactNode, RefObject } from 'react';
 export declare const ModalProvider: ({ children }: {
     children: ReactNode;
-}) => JSX.Element;
+}) => import("react/jsx-runtime").JSX.Element;
+interface ModalOptions {
+    rightPositionDistance?: number;
+}
 export type ModalProps = {
     buttonRef: RefObject<HTMLElement>;
     closeModal: () => void;
+    options?: ModalOptions;
 };
-export declare const useModal: ({ buttonRef, closeModal }: ModalProps) => {
+export declare const useModal: ({ buttonRef, closeModal, options }: ModalProps) => {
     style: {
-        right: number;
+        right: string | number;
     } | {
         right?: undefined;
     };
@@ -29,4 +33,5 @@ export type useModalParams = {
     buttonRef: RefObject<HTMLButtonElement>;
     closeModal: () => void;
 };
+export {};
 //# sourceMappingURL=useModal.d.ts.map

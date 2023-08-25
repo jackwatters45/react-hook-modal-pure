@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useModalTrigger = exports.useModal = exports.ModalProvider = void 0;
 var jsx_runtime_1 = require("react/jsx-runtime");
@@ -18,19 +7,21 @@ var ModalContext = (0, react_1.createContext)(undefined);
 var ModalProvider = function (_a) {
     var children = _a.children;
     var _b = (0, react_1.useState)(false), isModalActiveGlobal = _b[0], SetIsModalActiveGlobal = _b[1];
-    return ((0, jsx_runtime_1.jsx)(ModalContext.Provider, __assign({ value: { isModalActiveGlobal: isModalActiveGlobal, SetIsModalActiveGlobal: SetIsModalActiveGlobal } }, { children: children })));
+    return ((0, jsx_runtime_1.jsx)(ModalContext.Provider, { value: { isModalActiveGlobal: isModalActiveGlobal, SetIsModalActiveGlobal: SetIsModalActiveGlobal }, children: children }));
 };
 exports.ModalProvider = ModalProvider;
 var useModal = function (_a) {
-    var buttonRef = _a.buttonRef, closeModal = _a.closeModal;
+    var buttonRef = _a.buttonRef, closeModal = _a.closeModal, options = _a.options;
     var rightPositionStyle = (0, react_1.useMemo)(function () {
-        var _a, _b;
+        var _a, _b, _c;
         if (!(buttonRef === null || buttonRef === void 0 ? void 0 : buttonRef.current))
             throw new Error('buttonRef is undefined');
         var buttonRect = (_a = buttonRef === null || buttonRef === void 0 ? void 0 : buttonRef.current) === null || _a === void 0 ? void 0 : _a.getBoundingClientRect();
         var pickerRightLoc = (_b = (buttonRect === null || buttonRect === void 0 ? void 0 : buttonRect.left) + 270) !== null && _b !== void 0 ? _b : 0;
-        return window.innerWidth - pickerRightLoc < 0 ? { right: 0 } : {};
-    }, [buttonRef]);
+        return window.innerWidth - pickerRightLoc < 0
+            ? { right: (_c = "".concat(options === null || options === void 0 ? void 0 : options.rightPositionDistance, "px")) !== null && _c !== void 0 ? _c : 0 }
+            : {};
+    }, [buttonRef, options]);
     var modalRef = (0, react_1.useRef)(null);
     (0, react_1.useEffect)(function () {
         var handleClick = function (e) {
